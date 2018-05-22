@@ -12,6 +12,8 @@ import com.facebook.react.ReactActivity;
  */
 
 public class WatermarkUtil{
+
+
     private static ReactActivity activity;
 
     public static void setActivity(ReactActivity activity) {
@@ -24,6 +26,7 @@ public class WatermarkUtil{
     private static View watermarkV;
 
     private static void init(){
+
         if (watermarkV == null)
             watermarkV = new View(activity);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -40,8 +43,38 @@ public class WatermarkUtil{
                     public void run() {
                         watermarkV.setBackgroundDrawable(waterMarkBg);
                     }
+
                 });
+
+            }
+
+            @Override
+            public void hiddenWaterMark() {
+                if(watermarkV!=null) {
+                    watermarkV.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            watermarkV.setVisibility(View.GONE);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void showWaterMark() {
+                if(watermarkV!=null) {
+                    watermarkV.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            watermarkV.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
             }
         };
+
     }
+
+
+
 }

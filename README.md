@@ -1,9 +1,13 @@
-#react-native-BGNativeModule
+#react-native-WaterMark
 
 
 ##安装
 ```
-rnpm install react-native-nativemodule
+npm install react-native-watermarks --save
+react-native link react-native-watermarks
+
+rnpm install react-native-watermarks
+
 ```
 
 ##集成
@@ -14,19 +18,34 @@ reactNative0.29版本以后，需要在`MainApplication.java`文件的`getPackag
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
-              new BGNativeExamplePackage()
+              new CustomPackage()
       );
     }
 ```
 
+```
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+        WatermarkUtil.setActivity(this);
+  }
+```
+
+
+
 ##使用
 ```
-import BGNativeModuleExample from 'react-native-nativemodule-example';
+import JQWaterMark from 'react-native-watermarks';
 
-BGNativeModuleExample.testPrint("Jack", {
-    height: '1.78m',
-    weight: '7kg'
-});
+    JQWaterMark.markWithName('久其1', {
+        horizontal_apace: '100',
+        vertical_space: '100',
+        cg_transform_rotation: '-0.5',
+        mark_font: '20',
+        mark_color: '#30666666',
+    });
+
 ```
 
 

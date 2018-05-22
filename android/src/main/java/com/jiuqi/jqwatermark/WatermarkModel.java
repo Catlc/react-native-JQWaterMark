@@ -35,8 +35,14 @@ public class WatermarkModel extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public  void  hiddenWaterMark() {
+        if (WatermarkUtil.iWatermarkInterface != null)
+            WatermarkUtil.iWatermarkInterface.hiddenWaterMark();
+    }
 
-//        WatermarkUtil.watermarkV == null;
+    @ReactMethod
+    public  void  showWaterMark() {
+        if (WatermarkUtil.iWatermarkInterface != null)
+            WatermarkUtil.iWatermarkInterface.showWaterMark();
 
     }
 

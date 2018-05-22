@@ -14,4 +14,6 @@
 
 @interface JQWaterMark : NSObject<RCTBridgeModule>
 
+@property(nonatomic,strong)UIImageView *markView;
+
 @end
